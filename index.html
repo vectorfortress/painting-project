@@ -7,12 +7,16 @@
   <title>House Painting Progress Update</title>
   <style>
     :root {
-      --bg: #f5f5f2;
-      --card: #ffffff;
-      --text: #252525;
-      --muted: #666;
-      --accent: #6b6b5f;
-      --border: #ddd8cf;
+      --bg: #fff7ed;
+      --card: rgba(255,255,255,0.92);
+      --text: #21190f;
+      --muted: #6f6258;
+      --accent: #f97316;
+      --accent-2: #14b8a6;
+      --accent-3: #facc15;
+      --deep: #1f2937;
+      --border: rgba(255,255,255,0.55);
+      --shadow: 0 22px 55px rgba(90,45,12,0.18);
     }
 
     * { box-sizing: border-box; }
@@ -20,48 +24,132 @@
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(250,204,21,.35), transparent 28%),
+        radial-gradient(circle at top right, rgba(20,184,166,.23), transparent 32%),
+        linear-gradient(180deg, #fff7ed 0%, #fff 42%, #f0fdfa 100%);
       color: var(--text);
       line-height: 1.6;
     }
 
     header {
-      padding: 48px 20px 32px;
+      position: relative;
+      overflow: hidden;
+      padding: 70px 20px 58px;
       text-align: center;
-      background: linear-gradient(135deg, #efeee9, #ffffff);
-      border-bottom: 1px solid var(--border);
+      color: #fff;
+      background:
+        linear-gradient(135deg, rgba(18, 24, 38, .86), rgba(249,115,22,.78)),
+        url("IMG-20260604-WA0007.jpg") center/cover;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 20% 20%, rgba(250,204,21,.45), transparent 28%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      backdrop-filter: blur(8px);
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      font-size: .78rem;
+      margin-bottom: 18px;
     }
 
     header h1 {
-      margin: 0 0 12px;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      color: #2f2f2f;
+      margin: 0 0 14px;
+      font-size: clamp(2.4rem, 6vw, 4.8rem);
+      line-height: 1.02;
+      text-shadow: 0 4px 20px rgba(0,0,0,.25);
     }
 
     header p {
       max-width: 760px;
       margin: 0 auto;
+      color: rgba(255,255,255,.92);
+      font-size: 1.12rem;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 14px;
+      max-width: 860px;
+      margin: -34px auto 34px;
+      padding: 0 18px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(8px);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .stat span {
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: .9rem;
     }
 
     main {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 36px 18px 60px;
+      padding: 18px 18px 70px;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 36px 0 22px;
     }
 
     .section-title {
-      margin: 8px 0 20px;
-      font-size: 1.6rem;
-      color: #333;
+      margin: 0;
+      font-size: clamp(1.55rem, 3vw, 2.25rem);
+      color: var(--deep);
+    }
+
+    .section-note {
+      margin: 0;
+      color: var(--muted);
+      max-width: 520px;
+      font-size: .98rem;
     }
 
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
-      margin-bottom: 44px;
+      gap: 24px;
+      margin-bottom: 46px;
     }
 
     .video-gallery {
@@ -71,9 +159,45 @@
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 16px;
+      border-radius: 24px;
       overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      box-shadow: var(--shadow);
+      transform: translateY(0);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 28px 70px rgba(90,45,12,.24);
+    }
+
+    .media-wrap {
+      position: relative;
+      overflow: hidden;
+      background: #e5e7eb;
+    }
+
+    .media-wrap::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 42%;
+      background: linear-gradient(transparent, rgba(0,0,0,.38));
+      pointer-events: none;
+    }
+
+    .tag {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 1;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-3), var(--accent));
+      color: #23160a;
+      font-size: .78rem;
+      font-weight: 800;
+      box-shadow: 0 10px 24px rgba(0,0,0,.18);
     }
 
     .card img,
@@ -84,23 +208,29 @@
     }
 
     .card img {
-      height: 260px;
+      height: 280px;
       object-fit: cover;
+      transition: transform .28s ease;
     }
+
+    .card:hover img { transform: scale(1.04); }
 
     .card video {
       max-height: 620px;
       object-fit: contain;
+      background: #111827;
     }
 
     .content {
-      padding: 18px 18px 20px;
+      padding: 20px 20px 24px;
+      border-top: 5px solid transparent;
+      border-image: linear-gradient(90deg, var(--accent), var(--accent-3), var(--accent-2)) 1;
     }
 
     .content h2 {
       margin: 0 0 8px;
-      font-size: 1.1rem;
-      color: #2d2d2d;
+      font-size: 1.16rem;
+      color: #1f2937;
     }
 
     .content p {
@@ -109,27 +239,67 @@
       font-size: 0.98rem;
     }
 
+    .callout {
+      margin: 18px 0 46px;
+      padding: 24px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, #fff7ed, #fef3c7, #ccfbf1);
+      border: 1px solid rgba(249,115,22,.24);
+      box-shadow: var(--shadow);
+    }
+
+    .callout h2 { margin: 0 0 8px; color: var(--deep); }
+    .callout p { margin: 0; color: var(--muted); }
+
     footer {
       text-align: center;
-      color: var(--muted);
-      padding: 26px 16px;
-      border-top: 1px solid var(--border);
-      background: #fff;
-      font-size: 0.9rem;
+      color: #fff;
+      padding: 30px 16px;
+      background: linear-gradient(135deg, #1f2937, #0f766e, #f97316);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 720px) {
+      header { padding: 58px 18px 48px; }
+      .section-heading { display: block; }
+      .section-note { margin-top: 6px; }
+      .card img { height: 230px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>House Painting Progress Update</h1>
-    <p>A visual update showing the interior painting materials, wall finishing, ceiling design, and ongoing preparation work inside the house.</p>
+    <div class="hero-inner">
+      <span class="badge">Painting & Interior Finishing</span>
+      <h1>House Painting Progress Update</h1>
+      <p>A vibrant visual update showing paint materials, wall finishing, ceiling design, lighting preparation, and ongoing touch-up work inside the house.</p>
+    </div>
   </header>
 
+  <section class="stats" aria-label="Project media summary">
+    <div class="stat"><strong>4</strong><span>Photo updates</span></div>
+    <div class="stat"><strong>4</strong><span>Video walkthroughs</span></div>
+    <div class="stat"><strong>Fresh</strong><span>Interior painting</span></div>
+    <div class="stat"><strong>Active</strong><span>Finishing work</span></div>
+  </section>
+
   <main>
-    <h2 class="section-title">Photo Updates</h2>
+    <div class="callout">
+      <h2>Progress is coming together beautifully</h2>
+      <p>The interior is now showing a cleaner, brighter, and more finished look, with materials on site and detailed work continuing around the ceilings, walls, and lighting points.</p>
+    </div>
+
+    <div class="section-heading">
+      <h2 class="section-title">Photo Updates</h2>
+      <p class="section-note">Key snapshots from the painting and finishing phase.</p>
+    </div>
+
     <section class="gallery" aria-label="Painting progress photo gallery">
       <article class="card">
-        <img src="IMG-20260516-WA0012.jpg" alt="Paint and finishing materials stacked inside a room" />
+        <div class="media-wrap">
+          <span class="tag">Materials</span>
+          <img src="IMG-20260516-WA0012.jpg" alt="Paint and finishing materials stacked inside a room" />
+        </div>
         <div class="content">
           <h2>Paint and Finishing Materials</h2>
           <p>Paint buckets and finishing materials are organized on site, showing that the painting phase is well supplied and ready for continued work.</p>
@@ -137,7 +307,10 @@
       </article>
 
       <article class="card">
-        <img src="IMG-20260604-WA0007.jpg" alt="Large interior room with painted walls and decorative ceiling design" />
+        <div class="media-wrap">
+          <span class="tag">Main Room</span>
+          <img src="IMG-20260604-WA0007.jpg" alt="Large interior room with painted walls and decorative ceiling design" />
+        </div>
         <div class="content">
           <h2>Main Interior Painting Progress</h2>
           <p>The main interior space shows completed wall coating in a clean neutral tone, with the ceiling design already prepared for lighting installation.</p>
@@ -145,7 +318,10 @@
       </article>
 
       <article class="card">
-        <img src="IMG-20260604-WA0008.jpg" alt="Interior corridor showing painted walls and ongoing finishing work" />
+        <div class="media-wrap">
+          <span class="tag">Entry Area</span>
+          <img src="IMG-20260604-WA0008.jpg" alt="Interior corridor showing painted walls and ongoing finishing work" />
+        </div>
         <div class="content">
           <h2>Corridor and Entry Area</h2>
           <p>The corridor and entry area are taking shape, with fresh wall finishing visible and materials still positioned for ongoing touch-ups.</p>
@@ -153,7 +329,10 @@
       </article>
 
       <article class="card">
-        <img src="IMG-20260604-WA0013.jpg" alt="Interior room with ceiling design, ladder, paint bucket, and tools" />
+        <div class="media-wrap">
+          <span class="tag">Touch-Ups</span>
+          <img src="IMG-20260604-WA0013.jpg" alt="Interior room with ceiling design, ladder, paint bucket, and tools" />
+        </div>
         <div class="content">
           <h2>Ceiling and Wall Touch-Ups</h2>
           <p>Workers are continuing detailed finishing work around the ceiling, walls, and lighting points before the final cleanup and completion stage.</p>
@@ -161,13 +340,20 @@
       </article>
     </section>
 
-    <h2 class="section-title">Video Updates</h2>
+    <div class="section-heading">
+      <h2 class="section-title">Video Updates</h2>
+      <p class="section-note">Walkthrough videos showing progress from different areas of the house.</p>
+    </div>
+
     <section class="gallery video-gallery" aria-label="Painting progress video gallery">
       <article class="card">
-        <video controls preload="metadata">
-          <source src="VID-20260521-WA0004.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div class="media-wrap">
+          <span class="tag">Walkthrough</span>
+          <video controls preload="metadata">
+            <source src="VID-20260521-WA0004.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div class="content">
           <h2>Early Interior Walkthrough</h2>
           <p>This video shows an early walkthrough of the open interior space, including the main room, windows, columns, and surfaces prepared for continued painting and finishing.</p>
@@ -175,10 +361,13 @@
       </article>
 
       <article class="card">
-        <video controls preload="metadata">
-          <source src="VID-20260523-WA0018.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div class="media-wrap">
+          <span class="tag">Walls</span>
+          <video controls preload="metadata">
+            <source src="VID-20260523-WA0018.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div class="content">
           <h2>Wall Finishing Review</h2>
           <p>This update highlights the wall finishing progress around the entry and interior passage areas, with paint buckets and materials still visible for remaining work.</p>
@@ -186,10 +375,13 @@
       </article>
 
       <article class="card">
-        <video controls preload="metadata">
-          <source src="VID-20260604-WA0014.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div class="media-wrap">
+          <span class="tag">Progress</span>
+          <video controls preload="metadata">
+            <source src="VID-20260604-WA0014.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div class="content">
           <h2>Walkthrough of Interior Progress</h2>
           <p>This video provides a walkthrough of the current interior progress, showing the painted walls, prepared ceiling sections, work materials, and remaining finishing areas.</p>
@@ -197,10 +389,13 @@
       </article>
 
       <article class="card">
-        <video controls preload="metadata">
-          <source src="VID-20260605-WA0040.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        <div class="media-wrap">
+          <span class="tag">Final Details</span>
+          <video controls preload="metadata">
+            <source src="VID-20260605-WA0040.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
         <div class="content">
           <h2>Active Painting and Touch-Up Work</h2>
           <p>This video captures active touch-up work near the ceiling and upper wall sections, showing continued attention to detail before the final cleanup stage.</p>
