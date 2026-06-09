@@ -4,408 +4,456 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>House Painting Progress Update</title>
+  <title>Premium House Finishing Showcase</title>
   <style>
     :root {
-      --bg: #fff7ed;
-      --card: rgba(255,255,255,0.92);
-      --text: #21190f;
-      --muted: #6f6258;
-      --accent: #f97316;
-      --accent-2: #14b8a6;
-      --accent-3: #facc15;
-      --deep: #1f2937;
-      --border: rgba(255,255,255,0.55);
-      --shadow: 0 22px 55px rgba(90,45,12,0.18);
+      --bg: #0f172a;
+      --bg-soft: #111827;
+      --card: rgba(15, 23, 42, 0.82);
+      --card-strong: rgba(30, 41, 59, 0.95);
+      --text: #f8fafc;
+      --muted: #cbd5e1;
+      --primary: #f97316;
+      --secondary: #06b6d4;
+      --pink: #ec4899;
+      --green: #22c55e;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: 0 22px 60px rgba(0, 0, 0, 0.35);
+      --gradient: linear-gradient(135deg, #f97316 0%, #ec4899 45%, #06b6d4 100%);
     }
 
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(250,204,21,.35), transparent 28%),
-        radial-gradient(circle at top right, rgba(20,184,166,.23), transparent 32%),
-        linear-gradient(180deg, #fff7ed 0%, #fff 42%, #f0fdfa 100%);
       color: var(--text);
       line-height: 1.6;
+      background:
+        radial-gradient(circle at 12% 8%, rgba(249, 115, 22, 0.34), transparent 30rem),
+        radial-gradient(circle at 88% 12%, rgba(6, 182, 212, 0.30), transparent 32rem),
+        radial-gradient(circle at 50% 60%, rgba(236, 72, 153, 0.18), transparent 34rem),
+        linear-gradient(135deg, #0f172a 0%, #111827 48%, #020617 100%);
     }
 
     header {
       position: relative;
       overflow: hidden;
-      padding: 70px 20px 58px;
+      min-height: 82vh;
+      display: grid;
+      place-items: center;
+      padding: 92px 20px 64px;
       text-align: center;
-      color: #fff;
       background:
-        linear-gradient(135deg, rgba(18, 24, 38, .86), rgba(249,115,22,.78)),
-        url("IMG-20260604-WA0007.jpg") center/cover;
+        linear-gradient(135deg, rgba(15, 23, 42, 0.45), rgba(15, 23, 42, 0.90)),
+        url('IMG-20260604-WA0007.jpg') center/cover no-repeat;
     }
 
     header::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 20% 20%, rgba(250,204,21,.45), transparent 28%);
+      background:
+        radial-gradient(circle at 30% 22%, rgba(255,255,255,0.24), transparent 16rem),
+        linear-gradient(135deg, rgba(249,115,22,0.50), rgba(236,72,153,0.42), rgba(6,182,212,0.42));
+      mix-blend-mode: screen;
       pointer-events: none;
     }
 
-    .hero-inner {
-      position: relative;
-      max-width: 920px;
-      margin: 0 auto;
-    }
+    .hero-content { position: relative; z-index: 1; max-width: 1040px; margin: 0 auto; }
 
     .badge {
       display: inline-block;
-      padding: 8px 16px;
+      padding: 9px 18px;
       border-radius: 999px;
-      background: rgba(255,255,255,.18);
-      border: 1px solid rgba(255,255,255,.35);
-      backdrop-filter: blur(8px);
-      font-weight: 700;
-      letter-spacing: .04em;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.35);
+      font-weight: 900;
+      letter-spacing: .08em;
       text-transform: uppercase;
       font-size: .78rem;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
+      backdrop-filter: blur(12px);
     }
 
     header h1 {
-      margin: 0 0 14px;
-      font-size: clamp(2.4rem, 6vw, 4.8rem);
-      line-height: 1.02;
-      text-shadow: 0 4px 20px rgba(0,0,0,.25);
+      margin: 0 0 18px;
+      font-size: clamp(2.7rem, 8vw, 6.2rem);
+      line-height: 1;
+      text-shadow: 0 18px 40px rgba(0,0,0,0.45);
     }
 
     header p {
-      max-width: 760px;
-      margin: 0 auto;
-      color: rgba(255,255,255,.92);
-      font-size: 1.12rem;
+      max-width: 880px;
+      margin: 0 auto 32px;
+      font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+      color: rgba(255,255,255,0.96);
     }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    .cta-row {
+      display: flex;
+      justify-content: center;
       gap: 14px;
-      max-width: 860px;
-      margin: -34px auto 34px;
-      padding: 0 18px;
-      position: relative;
-      z-index: 2;
+      flex-wrap: wrap;
+      margin: 28px 0 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      font-weight: 900;
+      padding: 13px 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.28);
+      background: var(--gradient);
+      box-shadow: 0 16px 35px rgba(0,0,0,0.24);
+      transition: transform .25s ease, box-shadow .25s ease;
+    }
+
+    .btn.secondary { background: rgba(255,255,255,0.14); backdrop-filter: blur(14px); }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 22px 48px rgba(0,0,0,0.34); }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 32px;
     }
 
     .stat {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
-      text-align: center;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(8px);
+      min-width: 165px;
+      padding: 18px 22px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.28);
+      border-radius: 22px;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 16px 35px rgba(0,0,0,0.18);
     }
 
     .stat strong {
       display: block;
-      font-size: 1.8rem;
-      color: var(--accent);
+      font-size: 2rem;
       line-height: 1;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
+    .stat span { font-size: .92rem; color: rgba(255,255,255,0.88); }
 
-    .stat span {
-      color: var(--muted);
-      font-size: .9rem;
-    }
-
-    main {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 18px 18px 70px;
-    }
-
-    .section-heading {
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
       display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 16px;
-      margin: 36px 0 22px;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding: 14px 16px;
+      background: rgba(2, 6, 23, 0.78);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(18px);
     }
 
+    nav a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: transform .25s ease, background .25s ease;
+    }
+    nav a:hover { transform: translateY(-2px); background: rgba(255,255,255,0.16); }
+
+    main { max-width: 1240px; margin: 0 auto; padding: 42px 18px 76px; }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 22px;
+      margin: 10px 0 54px;
+    }
+
+    .sales-card {
+      padding: 26px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+    .sales-card h3 { margin: 0 0 8px; font-size: 1.2rem; }
+    .sales-card p { margin: 0; color: var(--muted); }
+
+    .section-head { margin: 38px 0 24px; text-align: center; }
+    .section-kicker {
+      display: inline-block;
+      margin-bottom: 6px;
+      color: var(--primary);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      font-size: .78rem;
+    }
     .section-title {
-      margin: 0;
-      font-size: clamp(1.55rem, 3vw, 2.25rem);
-      color: var(--deep);
+      margin: 0 0 10px;
+      font-size: clamp(1.9rem, 4.4vw, 3rem);
+      color: var(--text);
     }
-
-    .section-note {
-      margin: 0;
-      color: var(--muted);
-      max-width: 520px;
-      font-size: .98rem;
+    .section-title::after {
+      content: "";
+      display: block;
+      width: 95px;
+      height: 5px;
+      margin: 14px auto 0;
+      border-radius: 999px;
+      background: var(--gradient);
     }
+    .section-subtitle { margin: 0 auto; color: var(--muted); max-width: 850px; }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
-      margin-bottom: 46px;
-    }
-
-    .video-gallery {
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+      gap: 26px;
+      margin-bottom: 48px;
     }
 
     .card {
       background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 24px;
+      border-radius: 26px;
       overflow: hidden;
       box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
       transform: translateY(0);
-      transition: transform .22s ease, box-shadow .22s ease;
+      transition: transform .3s ease, box-shadow .3s ease, border-color .3s ease;
     }
-
     .card:hover {
-      transform: translateY(-7px);
-      box-shadow: 0 28px 70px rgba(90,45,12,.24);
+      transform: translateY(-9px);
+      border-color: rgba(255,255,255,0.28);
+      box-shadow: 0 30px 75px rgba(0,0,0,0.48);
     }
 
-    .media-wrap {
-      position: relative;
-      overflow: hidden;
-      background: #e5e7eb;
-    }
-
-    .media-wrap::after {
+    .media-wrap { position: relative; overflow: hidden; background: #020617; }
+    .media-wrap::before {
       content: "";
       position: absolute;
-      inset: auto 0 0;
-      height: 42%;
-      background: linear-gradient(transparent, rgba(0,0,0,.38));
+      inset: 0;
       pointer-events: none;
+      z-index: 1;
+      background: linear-gradient(to bottom, transparent 55%, rgba(0,0,0,0.42));
     }
+
+    .card img, .card video {
+      width: 100%;
+      display: block;
+      transition: transform .55s ease;
+    }
+    .card:hover img, .card:hover video { transform: scale(1.045); }
+    .card img { height: 292px; object-fit: cover; }
+    .card video { max-height: 650px; object-fit: contain; background: #000; }
 
     .tag {
       position: absolute;
       top: 14px;
       left: 14px;
-      z-index: 1;
-      padding: 6px 12px;
+      z-index: 2;
+      padding: 7px 12px;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent-3), var(--accent));
-      color: #23160a;
-      font-size: .78rem;
-      font-weight: 800;
-      box-shadow: 0 10px 24px rgba(0,0,0,.18);
+      color: #fff;
+      background: var(--gradient);
+      font-size: .75rem;
+      font-weight: 900;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.32);
     }
 
-    .card img,
-    .card video {
-      width: 100%;
-      display: block;
-      background: #ddd;
+    .content { padding: 20px 20px 24px; }
+    .content h2 { margin: 0 0 9px; font-size: 1.16rem; color: var(--text); }
+    .content p { margin: 0; color: var(--muted); font-size: .98rem; }
+
+    .highlight {
+      margin: 26px 0 52px;
+      padding: 34px;
+      border-radius: 30px;
+      background:
+        linear-gradient(135deg, rgba(249,115,22,0.92), rgba(236,72,153,0.88), rgba(6,182,212,0.92));
+      box-shadow: var(--shadow);
+      color: white;
+      position: relative;
+      overflow: hidden;
     }
-
-    .card img {
-      height: 280px;
-      object-fit: cover;
-      transition: transform .28s ease;
+    .highlight::after {
+      content: "";
+      position: absolute;
+      inset: -60px -120px auto auto;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.18);
     }
+    .highlight h2 { margin: 0 0 8px; font-size: 1.7rem; position: relative; z-index: 1; }
+    .highlight p { margin: 0; max-width: 960px; position: relative; z-index: 1; font-size: 1.05rem; }
 
-    .card:hover img { transform: scale(1.04); }
-
-    .card video {
-      max-height: 620px;
-      object-fit: contain;
-      background: #111827;
-    }
-
-    .content {
-      padding: 20px 20px 24px;
-      border-top: 5px solid transparent;
-      border-image: linear-gradient(90deg, var(--accent), var(--accent-3), var(--accent-2)) 1;
-    }
-
-    .content h2 {
-      margin: 0 0 8px;
-      font-size: 1.16rem;
-      color: #1f2937;
-    }
-
-    .content p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.98rem;
-    }
-
-    .callout {
-      margin: 18px 0 46px;
-      padding: 24px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, #fff7ed, #fef3c7, #ccfbf1);
-      border: 1px solid rgba(249,115,22,.24);
+    .cta-panel {
+      text-align: center;
+      padding: 40px 24px;
+      margin: 42px 0 0;
+      border-radius: 34px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow);
     }
-
-    .callout h2 { margin: 0 0 8px; color: var(--deep); }
-    .callout p { margin: 0; color: var(--muted); }
+    .cta-panel h2 { margin: 0 0 10px; font-size: clamp(1.8rem, 4vw, 2.7rem); }
+    .cta-panel p { max-width: 760px; margin: 0 auto 24px; color: var(--muted); }
 
     footer {
       text-align: center;
-      color: #fff;
-      padding: 30px 16px;
-      background: linear-gradient(135deg, #1f2937, #0f766e, #f97316);
-      font-size: 0.95rem;
+      color: rgba(255,255,255,0.88);
+      padding: 34px 16px;
+      background: linear-gradient(135deg, #020617, #111827 55%, #0f172a);
+      border-top: 1px solid var(--border);
+      font-size: .94rem;
     }
 
-    @media (max-width: 720px) {
-      header { padding: 58px 18px 48px; }
-      .section-heading { display: block; }
-      .section-note { margin-top: 6px; }
-      .card img { height: 230px; }
+    @media (max-width: 640px) {
+      header { min-height: 72vh; padding: 70px 16px 44px; }
+      .stat { min-width: 135px; padding: 15px 16px; }
+      .card img { height: 245px; }
+      main { padding: 30px 14px 60px; }
     }
   </style>
 </head>
 <body>
   <header>
-    <div class="hero-inner">
-      <span class="badge">Painting & Interior Finishing</span>
-      <h1>House Painting Progress Update</h1>
-      <p>A vibrant visual update showing paint materials, wall finishing, ceiling design, lighting preparation, and ongoing touch-up work inside the house.</p>
+    <div class="hero-content">
+      <div class="badge">Premium Interior Finishing Showcase</div>
+      <h1>Modern House Finishing That Speaks for Itself</h1>
+      <p>From smooth interior painting and decorative ceilings to luxury bathroom fixtures and clean installation details, this project shows the transformation of a house into a polished, comfortable, and high-value home.</p>
+      <div class="cta-row">
+        <a class="btn" href="#photos">View Project Gallery</a>
+        <a class="btn secondary" href="#videos">Watch Walkthroughs</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>8</strong><span>High-impact photo updates</span></div>
+        <div class="stat"><strong>10</strong><span>Detailed video walkthroughs</span></div>
+        <div class="stat"><strong>Premium</strong><span>Interior finish quality</span></div>
+      </div>
     </div>
   </header>
 
-  <section class="stats" aria-label="Project media summary">
-    <div class="stat"><strong>4</strong><span>Photo updates</span></div>
-    <div class="stat"><strong>4</strong><span>Video walkthroughs</span></div>
-    <div class="stat"><strong>Fresh</strong><span>Interior painting</span></div>
-    <div class="stat"><strong>Active</strong><span>Finishing work</span></div>
-  </section>
+  <nav aria-label="Page navigation">
+    <a href="#overview">Overview</a>
+    <a href="#photos">Photos</a>
+    <a href="#bathroom">Bathroom</a>
+    <a href="#videos">Videos</a>
+  </nav>
 
   <main>
-    <div class="callout">
-      <h2>Progress is coming together beautifully</h2>
-      <p>The interior is now showing a cleaner, brighter, and more finished look, with materials on site and detailed work continuing around the ceilings, walls, and lighting points.</p>
-    </div>
-
-    <div class="section-heading">
-      <h2 class="section-title">Photo Updates</h2>
-      <p class="section-note">Key snapshots from the painting and finishing phase.</p>
-    </div>
-
-    <section class="gallery" aria-label="Painting progress photo gallery">
-      <article class="card">
-        <div class="media-wrap">
-          <span class="tag">Materials</span>
-          <img src="IMG-20260516-WA0012.jpg" alt="Paint and finishing materials stacked inside a room" />
-        </div>
-        <div class="content">
-          <h2>Paint and Finishing Materials</h2>
-          <p>Paint buckets and finishing materials are organized on site, showing that the painting phase is well supplied and ready for continued work.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="media-wrap">
-          <span class="tag">Main Room</span>
-          <img src="IMG-20260604-WA0007.jpg" alt="Large interior room with painted walls and decorative ceiling design" />
-        </div>
-        <div class="content">
-          <h2>Main Interior Painting Progress</h2>
-          <p>The main interior space shows completed wall coating in a clean neutral tone, with the ceiling design already prepared for lighting installation.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="media-wrap">
-          <span class="tag">Entry Area</span>
-          <img src="IMG-20260604-WA0008.jpg" alt="Interior corridor showing painted walls and ongoing finishing work" />
-        </div>
-        <div class="content">
-          <h2>Corridor and Entry Area</h2>
-          <p>The corridor and entry area are taking shape, with fresh wall finishing visible and materials still positioned for ongoing touch-ups.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="media-wrap">
-          <span class="tag">Touch-Ups</span>
-          <img src="IMG-20260604-WA0013.jpg" alt="Interior room with ceiling design, ladder, paint bucket, and tools" />
-        </div>
-        <div class="content">
-          <h2>Ceiling and Wall Touch-Ups</h2>
-          <p>Workers are continuing detailed finishing work around the ceiling, walls, and lighting points before the final cleanup and completion stage.</p>
-        </div>
-      </article>
+    <section id="overview" class="intro-grid" aria-label="Project selling points">
+      <div class="sales-card">
+        <h3>Clean, Modern Interior Finish</h3>
+        <p>Fresh wall colors, smooth finishing, and carefully prepared ceiling details give the home a bright, refined, and move-in-ready feel.</p>
+      </div>
+      <div class="sales-card">
+        <h3>Luxury Bathroom Appeal</h3>
+        <p>The bold red-and-white bathroom design, floating vanity, bathtub, wall-mounted toilet, mirror, and chrome fixtures create a premium look that stands out immediately.</p>
+      </div>
+      <div class="sales-card">
+        <h3>Visible Progress and Real Proof</h3>
+        <p>Photos and videos show the work from multiple angles, helping viewers see the quality, progress, and attention to detail behind the project.</p>
+      </div>
     </section>
 
-    <div class="section-heading">
-      <h2 class="section-title">Video Updates</h2>
-      <p class="section-note">Walkthrough videos showing progress from different areas of the house.</p>
+    <section id="photos">
+      <div class="section-head">
+        <div class="section-kicker">Photo Showcase</div>
+        <h2 class="section-title">A Home Coming to Life with Style and Detail</h2>
+        <p class="section-subtitle">Every image highlights a different selling point: organized materials, smooth painted walls, decorative ceilings, modern bathroom fixtures, and the final details that make the home feel complete.</p>
+      </div>
+
+      <div class="gallery">
+        <article class="card">
+          <div class="media-wrap"><span class="tag">Materials Ready</span><img src="IMG-20260516-WA0012.jpg" alt="Paint and finishing materials stacked inside a room" /></div>
+          <div class="content"><h2>Fully Supplied for Quality Finishing</h2><p>Paint and finishing materials are neatly organized on site, showing strong preparation and readiness to complete the interior with consistency and care.</p></div>
+        </article>
+
+        <article class="card">
+          <div class="media-wrap"><span class="tag">Main Living Area</span><img src="IMG-20260604-WA0007.jpg" alt="Large interior room with painted walls and decorative ceiling design" /></div>
+          <div class="content"><h2>Spacious Interior with Premium Ceiling Detail</h2><p>The main room already feels open, bright, and elegant, with smooth neutral walls and a decorative ceiling design that adds value and visual appeal.</p></div>
+        </article>
+
+        <article class="card">
+          <div class="media-wrap"><span class="tag">Entry Impression</span><img src="IMG-20260604-WA0008.jpg" alt="Interior corridor showing painted walls and ongoing finishing work" /></div>
+          <div class="content"><h2>Clean Corridor and Entry Flow</h2><p>The entry and corridor areas are taking shape with fresh finishing, creating a welcoming first impression as visitors move through the home.</p></div>
+        </article>
+
+        <article class="card">
+          <div class="media-wrap"><span class="tag">Craftsmanship</span><img src="IMG-20260604-WA0013.jpg" alt="Interior room with ceiling design, ladder, paint bucket, and tools" /></div>
+          <div class="content"><h2>Detail Work Before Final Reveal</h2><p>The ceiling, walls, and lighting points are being refined to deliver a polished finish that looks professional and well coordinated.</p></div>
+        </article>
+
+        <article class="card" id="bathroom">
+          <div class="media-wrap"><span class="tag">Luxury Bath</span><img src="IMG-20260609-WA0064.jpg" alt="Bathroom vanity with mirror, sink, faucet, and red wall tiles" /></div>
+          <div class="content"><h2>Designer Vanity with Bold Accent Tiles</h2><p>The floating vanity, framed mirror, vessel sink, and chrome faucet create a modern bathroom feature that instantly upgrades the space.</p></div>
+        </article>
+
+        <article class="card">
+          <div class="media-wrap"><span class="tag">Water Tested</span><img src="IMG-20260609-WA0068.jpg" alt="Close-up of bathroom faucet running water into white sink" /></div>
+          <div class="content"><h2>Functional Fixtures, Not Just Beautiful Design</h2><p>The faucet water test confirms progress beyond appearance, showing that the plumbing connection is active and the basin is ready for use.</p></div>
+        </article>
+
+        <article class="card">
+          <div class="media-wrap"><span class="tag">Relaxation Feature</span><img src="IMG-20260609-WA0061.jpg" alt="White bathtub with shower fixture and red accent wall tiles" /></div>
+          <div class="content"><h2>Freestanding Bathtub with Modern Shower Setup</h2><p>The bathtub adds comfort and luxury, while the shower fixture and red accent wall give the bathroom a clean, hotel-inspired finish.</p></div>
+        </article>
+
+        <article class="card">
+          <div class="media-wrap"><span class="tag">Modern Toilet</span><img src="IMG-20260609-WA0069.jpg" alt="Wall-mounted toilet with flush plate and red wall tiles" /></div>
+          <div class="content"><h2>Wall-Mounted Toilet for a Sleek Look</h2><p>The concealed-cistern toilet and chrome flush plate give the bathroom a minimalist, modern feel while making the space look cleaner and more upscale.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <div class="highlight">
+      <h2>Why This Home Stands Out</h2>
+      <p>This project is no longer just under construction; it is showing real lifestyle value. The combination of polished wall finishes, decorative ceilings, modern bathroom installations, lighting preparation, plumbing checks, and clean interior flow creates a home that feels attractive, functional, and ready for its final presentation.</p>
     </div>
 
-    <section class="gallery video-gallery" aria-label="Painting progress video gallery">
-      <article class="card">
-        <div class="media-wrap">
-          <span class="tag">Walkthrough</span>
-          <video controls preload="metadata">
-            <source src="VID-20260521-WA0004.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="content">
-          <h2>Early Interior Walkthrough</h2>
-          <p>This video shows an early walkthrough of the open interior space, including the main room, windows, columns, and surfaces prepared for continued painting and finishing.</p>
-        </div>
-      </article>
+    <section id="videos">
+      <div class="section-head">
+        <div class="section-kicker">Video Walkthroughs</div>
+        <h2 class="section-title">See the Progress, Quality, and Finishing Details in Motion</h2>
+        <p class="section-subtitle">These clips help viewers experience the space as they would in person, showing room flow, fixture placement, lighting progress, plumbing work, doors, and finishing details from multiple angles.</p>
+      </div>
 
-      <article class="card">
-        <div class="media-wrap">
-          <span class="tag">Walls</span>
-          <video controls preload="metadata">
-            <source src="VID-20260523-WA0018.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="content">
-          <h2>Wall Finishing Review</h2>
-          <p>This update highlights the wall finishing progress around the entry and interior passage areas, with paint buckets and materials still visible for remaining work.</p>
-        </div>
-      </article>
+      <div class="gallery">
+        <article class="card"><div class="media-wrap"><span class="tag">Foundation Look</span><video controls preload="metadata"><source src="VID-20260521-WA0004.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Interior Layout and Space Potential</h2><p>This walkthrough shows the open floor layout, tiled areas, columns, and room flow, giving a strong sense of the home’s size and potential.</p></div></article>
+        <article class="card"><div class="media-wrap"><span class="tag">Preparation</span><video controls preload="metadata"><source src="VID-20260523-WA0018.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Prepared for the Next Level of Finishing</h2><p>The clip highlights prepared wall surfaces and work areas, showing the transition from construction stage to refined interior completion.</p></div></article>
+        <article class="card"><div class="media-wrap"><span class="tag">Paint Progress</span><video controls preload="metadata"><source src="VID-20260604-WA0014.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Fresh Paint and Interior Transformation</h2><p>A full visual update showing painted walls, ceiling sections, materials, and the improved feel of the main rooms as the home becomes more polished.</p></div></article>
+        <article class="card"><div class="media-wrap"><span class="tag">Ceiling Finish</span><video controls preload="metadata"><source src="VID-20260605-WA0040.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Decorative Ceiling Work That Adds Value</h2><p>This video focuses on ceiling and upper wall finishing, showing the design details that help elevate the home beyond a basic interior.</p></div></article>
+        <article class="card"><div class="media-wrap"><span class="tag">Exterior Utility</span><video controls preload="metadata"><source src="VID-20260609-WA0008.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Exterior Plumbing Support Work</h2><p>The exterior line work shows important utility progress supporting the bathrooms and water systems, helping the home move closer to full functionality.</p></div></article>
+        <article class="card"><div class="media-wrap"><span class="tag">Pipe Detail</span><video controls preload="metadata"><source src="VID-20260609-WA0071.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Plumbing Connections Behind the Finish</h2><p>This close-up captures plumbing outlets and connection points, showing the practical work that supports the clean bathroom presentation.</p></div></article>
+        <article class="card"><div class="media-wrap"><span class="tag">Lighting Test</span><video controls preload="metadata"><source src="VID-20260609-WA0072.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Ceiling Lighting Bringing the Room to Life</h2><p>The lighting test highlights the decorative ceiling design and demonstrates how the room will feel brighter, warmer, and more finished.</p></div></article>
+        <article class="card"><div class="media-wrap"><span class="tag">Bathroom Reveal</span><video controls preload="metadata"><source src="VID-20260609-WA0073.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Modern Bathroom Feature Walkthrough</h2><p>A closer view of the vanity, mirror, basin, faucet, and red accent tiles, showcasing one of the strongest selling features of the home.</p></div></article>
+        <article class="card"><div class="media-wrap"><span class="tag">Electrical Prep</span><video controls preload="metadata"><source src="VID-20260609-WA0074.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Overhead Utility and Fixture Preparation</h2><p>This clip shows the electrical and ceiling preparation work that supports final lighting, comfort, and interior presentation.</p></div></article>
+        <article class="card"><div class="media-wrap"><span class="tag">Door Detail</span><video controls preload="metadata"><source src="VID-20260609-WA0087.mp4" type="video/mp4" />Your browser does not support the video tag.</video></div><div class="content"><h2>Door and Entry Detail for a Finished Feel</h2><p>The door and entry update adds to the home’s security, privacy, and finished appearance, completing another important part of the interior presentation.</p></div></article>
+      </div>
+    </section>
 
-      <article class="card">
-        <div class="media-wrap">
-          <span class="tag">Progress</span>
-          <video controls preload="metadata">
-            <source src="VID-20260604-WA0014.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="content">
-          <h2>Walkthrough of Interior Progress</h2>
-          <p>This video provides a walkthrough of the current interior progress, showing the painted walls, prepared ceiling sections, work materials, and remaining finishing areas.</p>
-        </div>
-      </article>
-
-      <article class="card">
-        <div class="media-wrap">
-          <span class="tag">Final Details</span>
-          <video controls preload="metadata">
-            <source src="VID-20260605-WA0040.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        </div>
-        <div class="content">
-          <h2>Active Painting and Touch-Up Work</h2>
-          <p>This video captures active touch-up work near the ceiling and upper wall sections, showing continued attention to detail before the final cleanup stage.</p>
-        </div>
-      </article>
+    <section class="cta-panel" aria-label="Final call to action">
+      <h2>Built to Impress. Finished to Feel Like Home.</h2>
+      <p>This showcase presents the property as a modern, attractive, and carefully finished home with strong visual appeal, functional upgrades, and premium interior details.</p>
+      <a class="btn" href="#photos">Explore the Finished Details</a>
     </section>
   </main>
 
   <footer>
-    House painting progress gallery prepared for GitLab Pages hosting.
+    Premium house finishing showcase prepared for GitLab Pages hosting.
   </footer>
 </body>
 </html>
